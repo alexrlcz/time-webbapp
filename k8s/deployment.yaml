@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: time-webapp
+  labels:
+    app: time-webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: time-webapp
+  template:
+    metadata:
+      labels:
+        app: time-webapp
+    spec:
+      containers:
+      - name: time-webapp
+        image: docker.io/library/time-webapp:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env:
+        - name: TZ
+          value: "Europe/Bucharest"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
