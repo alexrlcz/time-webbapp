@@ -28,17 +28,3 @@ jobs:
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/time-webapp:latest
           ${{ secrets.DOCKER_USERNAME }}/time-webapp:${{ github.sha }}
-    
-    - name: Deploy to k3s
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      run: |
-        mkdir -p $HOME/.kube
-        echo "$KUBE_CONFIG" | base64 -d > $HOME/.kube/config
-        
-        kubectl set image deployment/time-webapp \
-          time-webapp=${{ secrets.DOCKER_USERNAME }}/time-webapp:${{ github.sha }} \
-          --record
-        
-        kubectl rollout status deployment/time-webapp -n default
