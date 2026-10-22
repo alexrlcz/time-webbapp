@@ -17,6 +17,7 @@ spec:
       containers:
       - name: time-webapp
         image: alexrlcz/time-webapp:latest
+        # Remove the imagePullPolicy: Never line completely
         ports:
         - containerPort: 5000
         env:

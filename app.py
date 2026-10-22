@@ -17,7 +17,7 @@ def show_time():
     return f"""
     <html>
     <body style="font-family: Arial; text-align: center; margin-top: 50px;">
-        <h1>Current Time</h1>
+        <h1>Current Time in tara mea</h1>
         <p style="font-size: 2em;">⏰ {now.strftime('%H:%M:%S')}</p>
         <p style="font-size: 1.2em;">📍 {tz_name}</p>
         <p style="color: #666;">{now.strftime('%A, %B %d, %Y')}</p>
