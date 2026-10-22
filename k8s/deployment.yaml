@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: time-webapp
-        image: docker.io/library/time-webapp:latest
-        imagePullPolicy: Never
+        image: alexrlcz/time-webapp:latest
         ports:
         - containerPort: 5000
         env:
